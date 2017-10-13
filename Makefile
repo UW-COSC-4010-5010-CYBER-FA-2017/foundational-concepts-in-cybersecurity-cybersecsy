@@ -16,7 +16,9 @@ CXXFLAGS=-ggdb -Wall -std=c++11
 
 example4: Example4/driver.cpp Example4/DisjointSet.hpp
 	${CXX} ${CXXFLAGS} Example4/driver.cpp -o example4
+nonexample4: Example4/driverBad.cpp
+	${CXX} ${CXXFLAGS} Example4/driverBad.cpp -o nonexample4
 
 clean: 
-	/bin/rm -f *.o core.* example4
+	/bin/rm -f *.o core.* example4 nonexample4 
 
