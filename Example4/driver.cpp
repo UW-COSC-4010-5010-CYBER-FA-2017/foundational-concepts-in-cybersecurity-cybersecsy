@@ -1,8 +1,8 @@
-//DisjointSet.h
+//driver.cpp
 //Wyatt Emery
 //Shaya Wolf
 //COSC 4010 Fall 2017
-// last code update: 3/21/16, by Wyatt Emery
+// last code update: 10-12-17 by Cybersecsy
 
 
 #include"DisjointSet.hpp"

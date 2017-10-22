@@ -1,8 +1,8 @@
-//DisjointSet.h
+//driverBad.cpp
 //Wyatt Emery
 //Shaya Wolf
 //COSC 4010 Fall 2017
-// last code update: 10-12-17 by Cybersecsy/
+// last code update: 10-12-17 by Cybersecsy
 
 #include<map>
 #include<string>

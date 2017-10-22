@@ -1,8 +1,7 @@
-//DisjointSet.h
+//DisjointSet.hpp
 //Wyatt Emery
 //Shaya Wolf
-//COSC 4010 Fall 2017
-// last code update: 3/21/16, by Wyatt Emery
+//COSC 4010/5010 Fall 2017
 
 /*
  *    Implements the Disjoint set Data structure. because the class is a templated class
