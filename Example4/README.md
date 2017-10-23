@@ -1,4 +1,5 @@
-Example 4: Abstraction(7), Simplicity(9), and Minimization(10) 
+# Example 4: 
+Abstraction(7), Simplicity(9), and Minimization(10) 
 
 
 Exemplar: driver.cpp, DisjointSet.hpp
