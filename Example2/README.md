@@ -1,5 +1,5 @@
 # Example 2 
-Process Isolation, Modularity, Resource Encapsulation
+Process Isolation(2), Modularity(5), Resource Encapsulation(3)
 
 
 threads - non example of process isolation
