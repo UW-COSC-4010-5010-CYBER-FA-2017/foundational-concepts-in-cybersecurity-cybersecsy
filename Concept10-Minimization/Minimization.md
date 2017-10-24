@@ -1,7 +1,7 @@
 # Concept 10 - Minimization
 * Code Example: 
   * Example4/DisjointSet.hpp
-  *  Example4/driver.cpp
+  * Example4/driver.cpp
 * Code NonExample: Example4/driverBad.cpp
 
 ----
