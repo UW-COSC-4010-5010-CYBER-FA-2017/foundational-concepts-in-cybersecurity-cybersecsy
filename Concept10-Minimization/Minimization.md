@@ -5,7 +5,7 @@
 * Code NonExample: Example4/driverBad.cpp
 
 ----
-![minimization](/Concept10-Minimization/minimization.jpg)
+![minimization](/Concept10-Minimization/minimization.gif)
 ----
 
 ## Example Description

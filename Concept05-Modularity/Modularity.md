@@ -1,6 +1,6 @@
 # Concept 05 - Modularity
 * Code Example: Example2/Exemplar/
-* Code NonExample: Example2/NonExample/
+* Code NonExample: Example2/NonExample/thread.cpp
 
 ----
 ![Modularity](/Concept05-Modularity/modularity.gif)
@@ -13,3 +13,4 @@ The QueueArray class also makes this a modular program in a similar manner. With
 
 ## NonExample Description
 
+Going along with the idea of encapsulating the arrays used in this program, that would also allow for some modularity. As it stands now, there is one cpp file. Nothing is seperated from main and there is no easy way to change anything, without changing most of it. You cannot remove pieces, you cannot change only the implementation of pieces. It is all tied together and very much not modular. If you were to encapsulate the arrays used in a data structure, you could begin to decouple the design from the implementation which creates modular code. With this, you can remove or change parts of the implementation of a particular piece of code without changing anything else. 
