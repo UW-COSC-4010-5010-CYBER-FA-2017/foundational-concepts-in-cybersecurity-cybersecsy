@@ -2,6 +2,10 @@
 * Code Example: Example2/Exemplar/
 * Code NonExample: Example2/NonExample/
 
+----
+![Modularity](/Concept05-Modularity/modularity.gif)
+----
+
 ## Example Description
 This is a very modular program. 3 distinct process work together with minimal information exchanged between them. In fact, you have to the ability to complete change the manner in which one of these proccesses accomplishes its task without even modifing the other two programs(provided it takes the same data to complete the task). Pipes are used to communicate data between these processes which provide an easy interface to access data from. However, how the data is manipulated by the process is completely self contained. 
 
