@@ -10,3 +10,5 @@ This program exemplifies simplicity in that it has a very targeted job, to imple
 
 ## NonExample Description
 This program does not exemplify simplicity because all the code is in the way of the user. It uses a global variable to handle data and the functions only modify that global variable. As it stands now, there is no way to create more than one disjoint set in the program. To have a second disjoint set would require a lot more code and many edits to the current code. very quickly, the program would grow large and very far from simple.
+
+![Simplicity](/Concept09-Simplicity/simplicity.gif)
