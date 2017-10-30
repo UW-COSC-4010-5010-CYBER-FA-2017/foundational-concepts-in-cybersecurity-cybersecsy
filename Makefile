@@ -8,36 +8,39 @@
 # this will compile and generate an executable for the various examples 
 # 
 ##############################
-PFUNCS=${EX2PATH}ProcessFunctions.h ${EX2PATH}ProcessFunctions.cpp
-EX2PATH=Example2/Exemplar/
+PFUNCS=${EX1PATH}ProcessFunctions.h ${EX1PATH}ProcessFunctions.cpp
+EX1PATH=Example1/Exemplar/
 CXX=g++
 CXXFLAGS=-ggdb -Wall -std=c++11
 
 .PHONY: clean
 
-all: example2 nonexample2 example3 example4 nonexample4
+all: example1 nonexample1 example2 example3 nonexample3
 
-example2: Commander ProcessManager Reporter
-nonexample2: Example2/NonExample/thread.cpp
-	${CXX} ${CXXFLAGS} -lpthread Example2/NonExample/thread.cpp -o nonexample2
+example1: Commander ProcessManager Reporter TestFile
+nonexample1: Example1/NonExample/thread.cpp
+	${CXX} ${CXXFLAGS} -pthread Example1/NonExample/thread.cpp -o nonexample1
 
-example3: Example3/driver.cpp 
+example2: Example2/driver.cpp 
+	${CXX} ${CXXFLAGS} Example2/driver.cpp -o example2
+nonexample2: Example2/driverBad.cpp
+	${CXX} ${CXXFLAGS} Example3/driverBad.cpp -o nonexample2
+ 
+example3: Example3/driver.cpp Example3/DisjointSet.hpp
 	${CXX} ${CXXFLAGS} Example3/driver.cpp -o example3
 nonexample3: Example3/driverBad.cpp
+	${CXX} ${CXXFLAGS} Example3/driverBad.cpp -o nonexample3
 
-	${CXX} ${CXXFLAGS} Example3/driverBad.cpp -o nonexample3 
-example4: Example4/driver.cpp Example4/DisjointSet.hpp
-	${CXX} ${CXXFLAGS} Example4/driver.cpp -o example4
-nonexample4: Example4/driverBad.cpp
-	${CXX} ${CXXFLAGS} Example4/driverBad.cpp -o nonexample4
-
-Commander: ${EX2PATH}Commander.cpp
-	${CXX} ${CFLAGS} ${EX2PATH}Commander.cpp -o commander
-ProcessManager: ${EX2PATH}ProcessManager.cpp ${PFUNCS}
-	${CXX} ${CFLAGS} ${EX2PATH}ProcessManager.cpp ${PFUNCS} -o processManager
-Reporter: ${EX2PATH}Reporter.cpp
-	${CXX} ${CFLAGS} ${EX2PATH}Reporter.cpp -o reporter 
+Commander: ${EX1PATH}Commander.cpp
+	${CXX} ${CFLAGS} ${EX1PATH}Commander.cpp -o commander
+ProcessManager: ${EX1PATH}ProcessManager.cpp ${PFUNCS}
+	${CXX} ${CFLAGS} ${EX1PATH}ProcessManager.cpp ${PFUNCS} -o processManager
+Reporter: ${EX1PATH}Reporter.cpp
+	${CXX} ${CFLAGS} ${EX1PATH}Reporter.cpp -o reporter 
+TestFile:
+	/bin/cp ${EX1PATH}example1_input.txt ./
 
 clean: 
-	/bin/rm -f *.o core.* nonexample2 example3 commander processManager reporter example4 nonexample4  
+	/bin/rm -f *.o core.* nonexample1 example2 nonexample2 commander \
+	processManager reporter example3 nonexample3 example1_input.txt   
 

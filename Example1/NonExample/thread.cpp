@@ -35,7 +35,8 @@ void *myThread(void *vargp)
         lets[i%10]--;
       }
     }
- 
+    return 0;
+    
 }
  
 int main()

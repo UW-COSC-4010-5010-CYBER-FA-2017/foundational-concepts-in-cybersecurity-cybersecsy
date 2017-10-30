@@ -1,4 +1,17 @@
+# Example 3: 
+Abstraction(7), Simplicity(9), and Minimization(10) 
 
 
+# Exemplar:
+    make example3
+This example consists of two files, DisjointSet.hpp and driver.cpp. DisjointSet.h. It implements a disjoint set data structure via a templated class. It performs the normal functions of a disjoint set including insert, merge, and find. There is also a print function to facilitate easy viewing of the objects contents. The driver just does some operations with the disjoint set data structure to show that it works. The driver is unable to do anything but call the public methods which provide for a controlled environment on the data. Even when DisjointSet is given an invalid input to its functions, it handles it in a documented manner and does not crash. The output just tests some of the disjoint set functions.
 
-This also exemplifies data hiding since the .h and .cpp files are seperated. As mentioned before implementation details are hidden, or can be. The programmer does not know, how all this is accomplished. You can see that a map is used to implement the data structure, but you cannot access it. There is no way to know what is done with the map or what map operations are utilized. All this is hidden because it is unnecessary for the data structure to be used in a program.
+### Running the Example:
+    ./example3 
+
+# NonExample:
+    make nonexample3
+There is just one file for the non example of Abstraction, Simplicity, and Minimization, driverBad.cpp. This implements the same disjoint set with the same functionality as the exemplar version. However, the methodology used to write it is completely different. All of the code is included next to main. A global variable which is a struct is used to store the information regarding the disjoint set. The functions simply modify this global variable. Because of that, only one disjoint set can be created in the entire program unless heavy modifications are made. The driver performs the same operations as the first driver to show that the it does the same thing. So on the surface, it appears that nothing has changed, but with a little digging this code could be exploited because there are no protections against that. It is kind of like using strcpy instead of strncpy. The first version has safeguards to make exploitation difficult. Whereas, this example does not.
+
+### Running the NonExample:
+    ./nonexample3 

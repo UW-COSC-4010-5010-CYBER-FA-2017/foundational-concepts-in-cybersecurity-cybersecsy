@@ -1,249 +1,72 @@
-// driver.cpp
-// Wyatt Emery
-// Shaya Wolf
-// COSC 4010/5012
-// Fall 2017
+//driver.cpp
+//Wyatt Emery
+//Shaya Wolf
+//COSC 4010 Fall 2017
+// last code update: 10-12-17 by Cybersecsy
 
-#include <iostream>
 
-using std::cin;
-using std::cout;
-using std::string;
-using std::endl;
+#include"DisjointSet.hpp"
+#include<iostream>
+using namespace std;
 
-void createAdmin();
-bool adminLoggedIn();
-bool userLoggedIn();
-int promptAdd();
-int addUser(string name, string pass);
-int promptLogin();
-int login(string name, string pass);
-void logout();
-int promptChangePass();
-int changePass();
-int promptDelete();
-int deleteUser();
 
-string users[5][3];
-int numUsers;
-string username;
-string password;
-
-int main() 
+int main()
 {
-  numUsers = 0;
-  bool exit = false;
-  int action = 0, priv = 0;
-  username = "";
-  password = "";
-
-  createAdmin();
-
-  while(!exit) {
-    cout << endl;
-    cout << "Select an action by typing it's corresponding number" << endl;
-    cout << "1: Login" << endl;
-    cout << "2: Exit" << endl;
-    cout << "Action >> " ;
-
-    cin >> action;
+  DisjointSet<int> set;
   
-    if(action == 1) {
-      priv = promptLogin();
-      if(priv == 0) {
-        while(adminLoggedIn()) { 
-          cout << endl;
-        }
-      } else if(priv > 0) {
-        while(userLoggedIn()) {
-          cout << endl;
-        }
-      } else {
-        cout << "Login Failed" << endl;
-      }
-    } else if(action == 2) {
-      exit = true;
-    } else {
-      cout << "Invalid Action number" << endl;
-    } 
+  cout << "DisjointSet driver\n inserting numbers 1-10." << endl;
+  
+  for(int i = 1; i < 11; i++)
+  {
+    set.insert(i);
   }
-
+  cout << "Set state: " << endl;
+  set.print();
+  
+  cout << "\n merging, 3 and 4, 8 and 2, 2 and 6" << endl;
+  set.merge(3,4);
+  set.merge(8,1);
+  set.merge(2,6);
+  cout << "Set state: " << endl;
+  set.print();
+  
+  cout << "\n merging 4 and 8, 9 and 3, 7 and 5" << endl;
+  set.merge(4,8);
+  set.merge(9,3);
+  set.merge(7,5);
+  cout << "Set state: " << endl;
+  set.print();
+  
+  cout << "\n Notice this created a second level in the tree since we merged to" 
+  << "trees of the same depth. This is seen in that 3 is part of set 4 which is" 
+  << "part of set 1." << endl;
+  
+  cout << "3 is in set:" << set.find(3) << "\n4 is in set:" << set.find(4) 
+  << endl;
+  
+  cout << "\nWhat about invalid input?" << endl;
+  
+  cout << "merge on 50 and 25" << endl;
+  set.merge(50,25);
+  cout << "Set state: " << endl;
+  set.print();
+  
+  cout << "merge on 50 and 10" << endl;
+  set.merge(50,10);
+  cout << "Set state: " << endl;
+  set.print();
+  
+  cout << "\nmerge on 50 and 65" << endl;
+  set.merge(50,65);
+  cout << "Set state: " << endl;
+  set.print();
+  
+  cout << "\nfind on 100: ";
+  cout << set.find(100) << endl;
+  cout << "This looks as though it is part of set 0. However, it just returned"; 
+  cout << " a null iterator object, which when printed by cout prints as a 0.\n";
+  cout << "\nSet state: " << endl;
+  set.print();
   return 0;
 }
 
-void createAdmin() {
-  cout << ">> Create Administrator" << endl;
-  if(!promptAdd()) {
-    cout << "Administrator not created!" << endl;
-  } else {
-    cout << "Administrator created!" << endl; 
-  }
-  return;
-}
-
-bool adminLoggedIn() {
-  int action = 0;
-  cout << endl;
-  cout << "Select an action by typing it's corresponding number" << endl;
-  cout << "1: Create a New User" << endl;
-  cout << "2: Change Password" << endl;
-  cout << "3: Delete a User" << endl;
-  cout << "4: Logout" << endl;
-  cout << "Action >> " ;
-
-  cin >> action;
-  if(action == 1) {
-    promptAdd();
-  } else if(action == 2) {
-    promptChangePass();
-  } else if(action == 3) {
-    promptDelete(); 
-  } else if(action == 4) {
-    logout();
-    return false;
-  }else {
-    cout << "Invalid Action number" << endl;
-  }  
-  return true;
-}
-
-bool userLoggedIn() {
-  int action = 0;
-  cout << endl;
-  cout << "Select an action by typing it's corresponding number" << endl;
-  cout << "1: Change Password" << endl;
-  cout << "2: Logout" << endl;
-  cout << "Action >> " ;
-
-  cin >> action;
-  if(action == 1) {
-    promptChangePass();
-  } else if(action == 2) {
-    logout();
-    return false;
-  }else {
-    cout << "Invalid Action number" << endl;
-  }  
-  return true;
-}
-
-int promptAdd() {
-  string name = "", pass = "";
-
-  cout << "New Username:" << endl;
-  cin >> name;
-
-  cout << "New Password:" << endl;
-  cin >> pass;
-
-  return addUser(name, pass);
-}
-
-int addUser(string name, string pass) {
-  if(numUsers >= 5) {
-    cout << "Reached Max Users" << endl;
-    return 0;
-  }
- 
-  string priv = "";
-  if(numUsers == 0) {
-    priv = "admin";
-  } else {
-    priv = "user";
-  }
-  users[numUsers][0] = name;
-  users[numUsers][1] = pass;
-  users[numUsers][2] = priv;
-  numUsers++;
-  return 1;
-}
-
-int promptLogin() {
-  string name = "", pass = "";
-  
-  cout << "Username:" << endl;
-  cin >> name;
-
-  cout << "Password:" << endl;
-  cin >> pass;
-  
-  return login(name, pass);
-}
-
-int login(string name, string pass) {
-  for(int i = 0; i < 5; i++) {
-    if(users[i][0] == name && users[i][1] == pass) {
-      cout << "Logged in: " << name << endl;
-      username = name;
-      password = pass;
-      return i;
-    }
-  }
-  return -1;
-}
-
-void logout() {
-  username = "";
-  password = "";
-  cout << "Logged Out!" << endl << endl;
-}
-
-int promptChangePass() {
-  string verPass = "";
-  cout << "Verify Password: " << endl;
-  cin >> verPass;
-
-  if(verPass == password) {
-    changePass();
-  } else {
-    cout << "Incorrect Password" << endl;
-  }
-
-  return 1;
-}
-
-int changePass() {
-  string newPass = "";
-  cout << "Enter New Password: " << endl;
-  cin >> newPass;
-
-  for(int i = 0; i < 5; i++) {
-    if(users[i][0] == username && users[i][1] == password) {
-      users[i][1] = newPass;
-      password = newPass;
-      return i;
-    }
-  }
-  return -1;
-}
-
-int promptDelete() {
-  string verPass = "";
-  cout << "Verify Password: " << endl;
-  cin >> verPass;
-
-  if(verPass == password) {
-    deleteUser();
-  } else {
-    cout << "Incorrect Password" << endl;
-  }
-
-  return 1;
-}
-
-int deleteUser() {
-  string delUser = "";
-  cout << "Enter the username of the user you want to delete: " << endl;
-  cin >> delUser;
-
-  for(int i = 0; i < 5; i++) {
-    if(users[i][0] == delUser) {
-       users[i][0] = "";
-       users[i][1] = "";
-       users[i][2] = "";
-       return 1;
-    }
-  }
-  cout << "Username not found!" << endl;
-  return 0;
-}
