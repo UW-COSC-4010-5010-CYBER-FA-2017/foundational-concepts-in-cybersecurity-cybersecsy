@@ -84,7 +84,7 @@ int main(int argc, char** argv)
         while((getline(&lineptr, &n, stdin) != -1))
         {
             /*Sleep 2 seconds*/
-            sleep(2);
+//             sleep(2);
             char* token;
             
             if(strlen(lineptr) == 2) token = strtok(lineptr, "\n");
