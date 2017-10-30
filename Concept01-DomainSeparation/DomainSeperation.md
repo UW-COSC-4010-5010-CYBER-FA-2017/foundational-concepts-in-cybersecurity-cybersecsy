@@ -1,13 +1,28 @@
-# Concept 04 - Domain Seperation
-* Code Example: Example1/driver.cpp
-* Code NonExample: Example1/driverbad.cpp
+# Concept 01 - Domain Separation
 
 ----
 ![DomainSeperation](/Concept01-DomainSeperation/domainseperation.jpg)
 ----
 
 ## Example Description
-When creating software, keeping in mind the concept of domain seperation is essential to making secure software. This is often accomplished by creating two or more domains of use. For example, a privileged domain and a user domain are often created to seperate their ability to execute instructions. Often, a privileged state is allowed full control of the system while a user state is only allowed partial control. The distinction between the administrator account and the numerous user accounts exemplifies domain seperation in example1. The administrator account has privileges over the user accounts and provides security through preventing any accidental or intentional changes to other accounts. It is also worth noting that oftentimes the number of accounts with access to elevated privileges is much smaller than the number of of accounts in the user domain. The idea behind that is keeping elevated privileges to a minimum, which provides for a more secure program overall. 
+We show domain seperation in *Example 2* by having separate functionality for 
+the administrator and the rest of the users. The administrator account has 
+privileges like adding and deleting other user that the user accounts can't 
+access. This provides security through preventing any accidental or intentional 
+changes to other accounts. The number 
+of accounts with access to elevated privileges is much smaller than the number 
+of of accounts in the user domain to keep elevated privileges to a minimum, 
+which provides for a more secure program overall. We also support this concept 
+by keeping few global variables and separating the program itself into separate 
+functions which have access to their own resources. 
 
 
 ## NonExample Description
+We show what can happen when domain separation is ingnored in *Example 2* 
+nonexample. By allowing all of the users to have the same privelages, you allow 
+any user to create or delete any other user. In the example we provide a 1:4 
+ratio on elevated privelages... but not here. Here we don't even check the 
+number of users, resulting in a segmentation fault if you go over. We also have 
+a ton of global variables, supporting a notion of free-for-all usage of 
+information. Further, we throw everything into main and let every part of the 
+program share resources with every other part. 
