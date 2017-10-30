@@ -15,7 +15,7 @@ CXXFLAGS=-ggdb -Wall -std=c++11
 
 .PHONY: clean
 
-all: example1 nonexample1 example2 example3 nonexample3
+all: example1 nonexample1 example2 nonexample2 example3 nonexample3
 
 example1: Commander ProcessManager Reporter TestFile
 nonexample1: Example1/NonExample/thread.cpp
@@ -24,7 +24,7 @@ nonexample1: Example1/NonExample/thread.cpp
 example2: Example2/driver.cpp 
 	${CXX} ${CXXFLAGS} Example2/driver.cpp -o example2
 nonexample2: Example2/driverBad.cpp
-	${CXX} ${CXXFLAGS} Example3/driverBad.cpp -o nonexample2
+	${CXX} ${CXXFLAGS} Example2/driverBad.cpp -o nonexample2
  
 example3: Example3/driver.cpp Example3/DisjointSet.hpp
 	${CXX} ${CXXFLAGS} Example3/driver.cpp -o example3
@@ -32,15 +32,15 @@ nonexample3: Example3/driverBad.cpp
 	${CXX} ${CXXFLAGS} Example3/driverBad.cpp -o nonexample3
 
 Commander: ${EX1PATH}Commander.cpp
-	${CXX} ${CFLAGS} ${EX1PATH}Commander.cpp -o commander
+	${CXX} ${CFLAGS} ${EX1PATH}Commander.cpp -o ex1_commander
 ProcessManager: ${EX1PATH}ProcessManager.cpp ${PFUNCS}
-	${CXX} ${CFLAGS} ${EX1PATH}ProcessManager.cpp ${PFUNCS} -o processManager
+	${CXX} ${CFLAGS} ${EX1PATH}ProcessManager.cpp ${PFUNCS} -o example1
 Reporter: ${EX1PATH}Reporter.cpp
-	${CXX} ${CFLAGS} ${EX1PATH}Reporter.cpp -o reporter 
+	${CXX} ${CFLAGS} ${EX1PATH}Reporter.cpp -o ex1_reporter 
 TestFile:
-	/bin/cp ${EX1PATH}example1_input.txt ./
+	/bin/cp ${EX1PATH}ex1_input.txt ./
 
 clean: 
-	/bin/rm -f *.o core.* nonexample1 example2 nonexample2 commander \
-	processManager reporter example3 nonexample3 example1_input.txt   
+	/bin/rm -f *.o core.* ex1_commander ex1_reporter ex1_input.txt \
+	 example1 nonexample1 example2 nonexample2 example3 nonexample3  
 

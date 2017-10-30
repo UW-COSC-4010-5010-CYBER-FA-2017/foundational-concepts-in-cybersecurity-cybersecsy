@@ -11,6 +11,7 @@ using std::cout;
 using std::string;
 using std::endl;
 
+void printUsers();
 void createAdmin();
 bool adminLoggedIn();
 bool userLoggedIn();
@@ -36,9 +37,17 @@ int main()
   int action = 0, priv = 0;
   username = "";
   password = "";
+  
+  for(int i = 0; i < 5; i++) {
+    for(int j = 0; j < 3; j++) {
+      users[i][j] = "";
+    }
+  }
 
+  // Create an administrator with admin priveledges
   createAdmin();
 
+  // Create a login loop
   while(!exit) {
     cout << endl;
     cout << "Select an action by typing it's corresponding number" << endl;
@@ -71,6 +80,16 @@ int main()
   return 0;
 }
 
+// Print the Usernames
+void printUsers() {
+  cout << endl << "------ USERS -------" << endl;
+  for(int i = 0; i < 5; i++) {
+    cout << "User " << i << ": " << users[i][0] << endl;
+  }
+  cout << "--------------------" << endl;
+}
+
+// Creates and Administrator in users[0]
 void createAdmin() {
   cout << ">> Create Administrator" << endl;
   if(!promptAdd()) {
@@ -81,6 +100,8 @@ void createAdmin() {
   return;
 }
 
+// Deals with everything that an administrator is allowed to do while
+// they are logged on. 
 bool adminLoggedIn() {
   int action = 0;
   cout << endl;
@@ -94,10 +115,12 @@ bool adminLoggedIn() {
   cin >> action;
   if(action == 1) {
     promptAdd();
+    printUsers();
   } else if(action == 2) {
     promptChangePass();
   } else if(action == 3) {
     promptDelete(); 
+    printUsers();
   } else if(action == 4) {
     logout();
     return false;
@@ -107,6 +130,8 @@ bool adminLoggedIn() {
   return true;
 }
 
+// Deals with everything a regular user is allowed to do while they
+// are logged on. 
 bool userLoggedIn() {
   int action = 0;
   cout << endl;
@@ -127,37 +152,65 @@ bool userLoggedIn() {
   return true;
 }
 
+// Prompts the admin to add a new user if there is room
 int promptAdd() {
+  bool nameTaken = true;
+  if(numUsers >= 5) {
+    cout << "Reached Max Users : Can't Create New User" << endl;
+    return 0;
+  }
+  
   string name = "", pass = "";
 
-  cout << "New Username:" << endl;
-  cin >> name;
+  while(nameTaken) {
+    cout << "New Username:" << endl;
+    cin >> name;
+    
+    if(numUsers > 0) {
+      for(int i = 0; i < numUsers; i++) {
+        if(users[i][0] == name) {
+          cout << "Username " << name << " is already taken!" << endl;
+          nameTaken = true;
+          break;
+        } 
+        nameTaken = false;
+      }
+    } else {
+      nameTaken = false;
+    }
+    
+  }
 
   cout << "New Password:" << endl;
   cin >> pass;
-
+  
   return addUser(name, pass);
 }
 
+// Adds the user the the users array
 int addUser(string name, string pass) {
-  if(numUsers >= 5) {
-    cout << "Reached Max Users" << endl;
-    return 0;
+  int nextUser = 0;
+  for(int i = numUsers; i >= 0; i--) {
+    if(users[i][0] == "") {
+      nextUser = i;
+    } 
   }
- 
+  
   string priv = "";
   if(numUsers == 0) {
     priv = "admin";
   } else {
     priv = "user";
   }
-  users[numUsers][0] = name;
-  users[numUsers][1] = pass;
-  users[numUsers][2] = priv;
+  users[nextUser][0] = name;
+  users[nextUser][1] = pass;
+  users[nextUser][2] = priv;
+  
   numUsers++;
   return 1;
 }
 
+// Prompts a user to login
 int promptLogin() {
   string name = "", pass = "";
   
@@ -170,8 +223,9 @@ int promptLogin() {
   return login(name, pass);
 }
 
+// Actually logs the user in
 int login(string name, string pass) {
-  for(int i = 0; i < 5; i++) {
+  for(int i = 0; i < numUsers; i++) {
     if(users[i][0] == name && users[i][1] == pass) {
       cout << "Logged in: " << name << endl;
       username = name;
@@ -182,12 +236,14 @@ int login(string name, string pass) {
   return -1;
 }
 
+// Logs out a user
 void logout() {
   username = "";
   password = "";
   cout << "Logged Out!" << endl << endl;
 }
 
+// Prompts a user to change their password
 int promptChangePass() {
   string verPass = "";
   cout << "Verify Password: " << endl;
@@ -202,21 +258,24 @@ int promptChangePass() {
   return 1;
 }
 
+// Actually changes the password in the users array
 int changePass() {
   string newPass = "";
   cout << "Enter New Password: " << endl;
   cin >> newPass;
 
-  for(int i = 0; i < 5; i++) {
+  for(int i = 0; i < numUsers; i++) {
     if(users[i][0] == username && users[i][1] == password) {
       users[i][1] = newPass;
       password = newPass;
+      cout << "Password Changed!" << endl;
       return i;
     }
   }
   return -1;
 }
 
+// Prompts the admin to delete a user after they verify their password
 int promptDelete() {
   string verPass = "";
   cout << "Verify Password: " << endl;
@@ -231,16 +290,19 @@ int promptDelete() {
   return 1;
 }
 
+// Actually deletes a user from the users array
 int deleteUser() {
   string delUser = "";
   cout << "Enter the username of the user you want to delete: " << endl;
   cin >> delUser;
 
-  for(int i = 0; i < 5; i++) {
+  for(int i = 0; i < numUsers; i++) {
     if(users[i][0] == delUser) {
        users[i][0] = "";
        users[i][1] = "";
        users[i][2] = "";
+       cout << "Deleted " << delUser << "!" << endl;
+       numUsers--;
        return 1;
     }
   }
