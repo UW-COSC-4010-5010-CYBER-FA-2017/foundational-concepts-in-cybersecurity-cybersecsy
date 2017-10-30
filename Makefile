@@ -8,16 +8,18 @@
 # this will compile and generate an executable for the various examples 
 # 
 ##############################
-PFUNCS=ProcessFunctions.h ProcessFunctions.cpp
+PFUNCS=${EX2PATH}ProcessFunctions.h ${EX2PATH}ProcessFunctions.cpp
 EX2PATH=Example2/Exemplar/
 CXX=g++
 CXXFLAGS=-ggdb -Wall -std=c++11
 
 .PHONY: clean
 
+all: example2 nonexample2 example3 example4 nonexample4
+
 example2: Commander ProcessManager Reporter
-nonexample2: /Example2/NonExample/thread.cpp
-	${CXX} ${CXXFLAGS} Example2/NonExample/thread.cpp -o nonexample2
+nonexample2: Example2/NonExample/thread.cpp
+	${CXX} ${CXXFLAGS} -lpthread Example2/NonExample/thread.cpp -o nonexample2
 
 example3: Example3/driver.cpp 
 	${CXX} ${CXXFLAGS} Example3/driver.cpp -o example3
@@ -30,12 +32,12 @@ nonexample4: Example4/driverBad.cpp
 	${CXX} ${CXXFLAGS} Example4/driverBad.cpp -o nonexample4
 
 Commander: ${EX2PATH}Commander.cpp
-	${CC} ${CFLAGS} ${EX2PATH}Commander.cpp -o commander
+	${CXX} ${CFLAGS} ${EX2PATH}Commander.cpp -o commander
 ProcessManager: ${EX2PATH}ProcessManager.cpp ${PFUNCS}
-	${CC} ${CFLAGS} ${EX2PATH}ProcessManager.cpp ${PFUNCS} -o processManager
+	${CXX} ${CFLAGS} ${EX2PATH}ProcessManager.cpp ${PFUNCS} -o processManager
 Reporter: ${EX2PATH}Reporter.cpp
-	${CC} ${CFLAGS} ${EX2PATH}Reporter.cpp -o reporter 
+	${CXX} ${CFLAGS} ${EX2PATH}Reporter.cpp -o reporter 
 
 clean: 
-	/bin/rm -f *.o core.* example4 nonexample4 
+	/bin/rm -f *.o core.* nonexample2 example3 commander processManager reporter example4 nonexample4  
 

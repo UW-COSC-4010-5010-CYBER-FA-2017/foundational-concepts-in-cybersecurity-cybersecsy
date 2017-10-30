@@ -4,7 +4,7 @@
  * COSC 4740 Project 2
  */
 
-#include "QueueArray.h"
+#include "QueueArray.hpp"
 
 #ifndef PROCESS_FUNC_H
 #define PROCESS_FUNC_H

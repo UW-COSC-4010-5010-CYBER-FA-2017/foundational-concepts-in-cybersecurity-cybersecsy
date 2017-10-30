@@ -17,7 +17,7 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<vector>
-#include "QueueArray.h"
+#include "QueueArray.hpp"
 #include "ProcessFunctions.h"
 #include<cstring>
 #include <sys/types.h>
