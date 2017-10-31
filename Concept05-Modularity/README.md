@@ -1,6 +1,6 @@
 # Concept 05
-* Code Example: Example2/Exemplar/
-* Code NonExample: Example2/NonExample/thread.cpp
+* Code Example: Example1/Exemplar/
+* Code NonExample: Example1/NonExample/thread.cpp
 
 ## Modularity 
 This concept is all about allowing for mixing and matching of parts. Take for 
