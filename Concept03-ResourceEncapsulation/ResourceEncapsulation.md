@@ -31,5 +31,5 @@ parent program, at least damage could be limited when using a class, in that
 only restricted and minimal access is allowed.
 
 ----
-![Independent](/Concept03-ResourceEncapsulation/independentThought.mp4)
+![Independent](/Concept03-ResourceEncapsulation/ind.gif)
 ----

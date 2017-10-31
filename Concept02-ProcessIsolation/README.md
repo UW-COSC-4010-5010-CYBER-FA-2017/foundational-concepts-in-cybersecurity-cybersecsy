@@ -1,4 +1,4 @@
-# Concept 02 - Process Isolation
+# Concept 02
 * Code Example: Example1/Exemplar/
 * Code NonExample: Example1/NonExample/thread.cpp
 

@@ -24,5 +24,5 @@ Further, we throw everything into main and let every part of the program share
 resources with every other part. 
 
 ----
-![DomainSeperation](/Concept01-DomainSeperation/domainseperation.jpg)
+![DomainSeparation](/Concept01-DomainSeparation/domainseperation.jpg)
 ----
