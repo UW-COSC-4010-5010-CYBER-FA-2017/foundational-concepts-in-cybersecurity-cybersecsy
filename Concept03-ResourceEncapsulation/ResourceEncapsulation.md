@@ -19,7 +19,6 @@ here, a class is used which provides the added security of private data members
 that cannot be accessed using outside code.
 
 ## NonExample Description
-
 Thread.cpp generates a very small program, and so there is not much to 
 encapsulate. However, the two global arrays could be and probably should be 
 encapsulated into some sort of data structure, preferably a class. This might 

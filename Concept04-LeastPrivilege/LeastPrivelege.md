@@ -20,5 +20,5 @@ hacked, so someone with ill-intent would likely have all of this information and
 therefore complete control of the machine. 
 
 ----
-![LeastPrivilege](/leastprivelege.gif)
+![LeastPrivilege](/Concept04-LeastPrivilege/leastprivelege.gif)
 ----
