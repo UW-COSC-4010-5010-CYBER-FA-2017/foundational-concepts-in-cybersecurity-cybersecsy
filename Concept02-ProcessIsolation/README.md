@@ -1,6 +1,6 @@
 # Concept 02 - Process Isolation
-* Code Example: Example2/Exemplar/
-* Code NonExample: Example2/NonExample/thread.cpp
+* Code Example: Example1/Exemplar/
+* Code NonExample: Example1/NonExample/thread.cpp
 
 ## Process Isolation
 You want to keep your programs from interacting with each other so they can 
