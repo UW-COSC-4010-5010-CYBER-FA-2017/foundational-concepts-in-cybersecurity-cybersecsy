@@ -1,11 +1,11 @@
 # Big 10 Programming Assignment
 
-Cyber Security 
+#### Cyber Security 
+#### Fall 2017
+#### Wyatt Emery and Shaya Wolf
 
-Fall 2017
-
-Wyatt Emery and Shaya Wolf
-
+## Global Makefile
+You can compile all of the files and make all of the executables at once by running "make" in the main directory. Likewise, you can "make clean" to get rid of all of extra stuff. You can also make the examples one at a time. Commands for this are given in the ReadMe's in the example directories. 
 
 ## Example1
 #### Process Isolation, Modularity and Resource Encapsulation
