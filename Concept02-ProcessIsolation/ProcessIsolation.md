@@ -7,9 +7,11 @@ The commander will fork and exec the processManager which will fork and exec
 the reporter. Each process has isolated memory space due to how fork 
 duplicates processes. All the memory spaces are copied into separate, newly 
 allocated, memory. The parent and child maintain separate memory spaces. This 
-is important because when a parent executes it's child, the system overwrites 
-the child's memory with that of the process being executed. If that memory were 
-shared to begin with, it might allow for an exploit into a child program.
+is important because when the processManager forks and its child executes the 
+reporter, the system overwrites the child's memory with that of the reporter. 
+The same thing occurs when the Commander forks and execs the processManager. 
+If that memory were shared to begin with, it might allow for an exploit into 
+a child program.
 
 ## NonExample Description
 In this example, there is one process that creates 10 threads, all of which 

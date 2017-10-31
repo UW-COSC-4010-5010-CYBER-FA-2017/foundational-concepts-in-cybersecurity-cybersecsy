@@ -15,7 +15,7 @@ state out, processManager forks and execs reporter, which uses a pipe to send
 data to the reporter, which is then printed out by the reporter.
 
 ### Running the Example:
-    ./commander < example1_input.txt 
+    ./ex1_commander < ex1_input.txt 
 
 **Note:** this will print a lot of stuff to stdout so I reccommend redirecting 
 the output to a file.

@@ -295,7 +295,7 @@ int main(int argc, char** argv)
                     sprintf(ReporterPipeRead, "%d", ReporterPipe[ReadEnd]);
                     sprintf(ReporterPipeWrite, "%d", ReporterPipe[WriteEnd]);
                     
-                    execl("./reporter", "./reporter", ReporterPipeRead, ReporterPipeWrite, NULL);
+                    execl("./ex1_reporter", "./ex1_reporter", ReporterPipeRead, ReporterPipeWrite, NULL);
                     cerr << "ProcessManager: execl() Error" << endl;
                     
                     ret = close(ReporterPipe[WriteEnd]);

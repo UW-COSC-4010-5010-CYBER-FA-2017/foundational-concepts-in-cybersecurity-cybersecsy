@@ -34,7 +34,7 @@ nonexample3: Example3/driverBad.cpp
 Commander: ${EX1PATH}Commander.cpp
 	${CXX} ${CFLAGS} ${EX1PATH}Commander.cpp -o ex1_commander
 ProcessManager: ${EX1PATH}ProcessManager.cpp ${PFUNCS}
-	${CXX} ${CFLAGS} ${EX1PATH}ProcessManager.cpp ${PFUNCS} -o example1
+	${CXX} ${CFLAGS} ${EX1PATH}ProcessManager.cpp ${PFUNCS} -o ex1_processManager
 Reporter: ${EX1PATH}Reporter.cpp
 	${CXX} ${CFLAGS} ${EX1PATH}Reporter.cpp -o ex1_reporter 
 TestFile:
@@ -42,5 +42,6 @@ TestFile:
 
 clean: 
 	/bin/rm -f *.o core.* ex1_commander ex1_reporter ex1_input.txt \
-	 example1 nonexample1 example2 nonexample2 example3 nonexample3  
+	 ex1_processManager example1 nonexample1 example2 nonexample2 \
+	example3 nonexample3  
 

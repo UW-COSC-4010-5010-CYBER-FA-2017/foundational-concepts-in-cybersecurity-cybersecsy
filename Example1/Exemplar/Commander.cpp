@@ -59,7 +59,7 @@ int main(int argc, char** argv)
         sprintf(ProcessManagerPipe_0, "%d", ProcessManagerPipe[0]);
         sprintf(ProcessManagerPipe_1, "%d", ProcessManagerPipe[1]);
         
-        execl("./processManager", "./processManager", ProcessManagerPipe_0, ProcessManagerPipe_1, NULL);
+        execl("./ex1_processManager", "./ex1_processManager", ProcessManagerPipe_0, ProcessManagerPipe_1, NULL);
         cerr << "Commander: execl() Error" << endl;
     
         ret = close(ProcessManagerPipe[WriteEnd]);

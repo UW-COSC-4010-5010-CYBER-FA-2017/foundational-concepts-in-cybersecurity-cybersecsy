@@ -32,7 +32,7 @@ account.
 
 
 ## NonExample:
-    make example2
+    make nonexample2
     
 This program is a simulation of a log in process for users on a system without 
 an admin. It is a literal free-for-all and anyone who is logged in has the 
