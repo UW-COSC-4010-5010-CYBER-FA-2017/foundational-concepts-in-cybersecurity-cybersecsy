@@ -21,5 +21,5 @@ the system already knows your password, and therefore isn't hindered by a second
 security measure of the same type as the first. 
 
 ----
-![Layering](/Concept06-Layering/layers.mp4)
+![Layering](/Concept06-Layering/layering.gif)
 ----
