@@ -24,11 +24,5 @@ Further, we throw everything into main and let every part of the program share
 resources with every other part. 
 
 ----
-![DomainSeperation][pic]
-
-[pic]: (/Concept01-DomainSeperation/domainseperation.jpg)
-
-[pic]: https://github.com/UW-COSC-4010-5010-CYBER-FA-2017/foundational-concepts-
-in-cybersecurity-cybersecsy/blob/master/Concept01-DomainSeparation/
-domainseperation .jpg
+![DomainSeperation](/Concept01-DomainSeperation/domainseperation.jpg)
 ----
