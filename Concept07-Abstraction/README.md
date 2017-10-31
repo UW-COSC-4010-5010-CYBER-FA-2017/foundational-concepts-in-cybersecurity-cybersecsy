@@ -2,7 +2,7 @@
 * Code Example: 
   * Example3/DisjointSet.hpp
   * Example3/driver.cpp
-* Code NonExample: Example4/driverBad.cpp
+* Code NonExample: Example3/driverBad.cpp
 
 ## Abstraction
 Abstraction is a way of representing a problem in a way that helps us solve it. 

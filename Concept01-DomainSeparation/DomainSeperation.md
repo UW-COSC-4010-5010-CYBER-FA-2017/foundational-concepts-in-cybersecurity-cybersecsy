@@ -1,7 +1,7 @@
 # Concept 01 - Domain Separation
 
 ## Example Description
-We show domain seperation in *Example 2* by having separate functionality for 
+We show domain seperation in Example 2 by having separate functionality for 
 the administrator and the rest of the users. The administrator account has 
 privileges, like adding and deleting other users, that the user accounts can't 
 access. This provides security through preventing any accidental or intentional 
@@ -14,7 +14,7 @@ functions which have access to their own resources.
 
 
 ## NonExample Description
-We show what can happen when domain separation is ingnored in *Nonexample 2*. 
+We show what can happen when domain separation is ingnored in Nonexample 2. 
 By allowing all of the users to have the same privelages, you allow any user to 
 create or delete any other user. In the example we provide a 1:4 ratio on 
 elevated privelages... but not here. Here we don't even check the number of 
